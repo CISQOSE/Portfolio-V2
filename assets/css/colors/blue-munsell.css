@@ -1,0 +1,37 @@
+/* =====================================================================
+   SHANKS_DEV — colors/blue-munsell.css  (Blue Munsell)
+   ===================================================================== */
+
+:root {
+  --accent:      #0094a8;
+  --accent-2:    #00b4cc;
+  --accent-glow: rgba(0, 148, 168, .18);
+  --border-acc:  rgba(0, 148, 168, .35);
+}
+
+a { color: var(--accent); }
+.mh-promo span            { color: var(--accent); border-color: var(--border-acc); background: var(--accent-glow); }
+.percentagem              { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.percentagem-num          { color: var(--accent); }
+.btn-fill                 { background: var(--accent); color: #fff !important; }
+.btn-fill:hover           { box-shadow: 0 8px 24px rgba(0,148,168,.35); }
+.mh-eduyear               { color: var(--accent); background: var(--accent-glow); border-color: var(--border-acc); }
+.mh-about-tag ul li span  { color: var(--accent); border-color: var(--border-acc); background: var(--accent-glow); }
+.each-icon                { color: var(--accent); background: var(--accent-glow); border-color: var(--border-acc); }
+.mh-client-item span      { color: var(--accent); }
+.social-icon li a:hover   { color: var(--accent) !important; border-color: var(--border-acc); background: var(--accent-glow); }
+.mh-education h3::after,
+.mh-work h3::after,
+.section-title h3::after  { background: var(--accent); }
+.img-border::before       { background: conic-gradient(from 0deg, var(--accent), var(--accent-2), transparent, var(--accent)); }
+.work-responsibility li i { color: var(--accent); }
+.mh-header-info ul li i   { color: var(--accent); }
+.iron-color               { color: var(--accent) !important; }
+.navbar-nav .nav-link::after { background: var(--accent); }
+#msgSubmit                { color: var(--accent); background: var(--accent-glow); border-color: var(--border-acc); }
+.single-form .form-control:focus { border-color: var(--border-acc) !important; box-shadow: 0 0 0 3px var(--accent-glow) !important; }
+.mh-education-item:hover,
+.mh-work-item:hover       { border-color: var(--border-acc); }
+.mh-education-item::before,
+.mh-work-item::before     { background: linear-gradient(180deg, var(--accent), transparent); }
+::-webkit-scrollbar-thumb { background: var(--accent); }

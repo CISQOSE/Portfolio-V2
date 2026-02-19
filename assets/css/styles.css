@@ -1,0 +1,366 @@
+/* =====================================================================
+   SHANKS_DEV — styles.css
+   Base theme structure. redesign.css loads after and overrides visuals.
+   ===================================================================== */
+
+/* ── Reset ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+ul  { list-style: none; padding: 0; margin: 0; }
+a   { text-decoration: none; }
+address { font-style: normal; }
+
+/* ── Typography ───────────────────────────────────────────────────── */
+body {
+  font-family: 'DM Sans', 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e8edf5;
+  background: #080c10;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+  line-height: 1.2;
+  margin-bottom: .75rem;
+}
+
+p { margin-bottom: 1rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ── Layout helpers ───────────────────────────────────────────────── */
+.section-separator  { padding: 80px 0; }
+.vertical-middle-content { align-items: center; }
+.xs-column-reverse  { }
+.home-padding       { padding: 0; }
+.hidden             { display: none !important; }
+.black-bg           { background: #080c10; }
+.dark-bg            { background: #0d1219; }
+.dark-vertion       { background: #080c10; }
+
+/* ── Header / Nav ─────────────────────────────────────────────────── */
+.mh-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  transition: background .3s ease;
+}
+
+.mh-header .overlay {
+  display: none;
+}
+
+.mh-nav {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.navbar-brand h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: -.02em;
+}
+
+.nav-btn { justify-content: space-between; }
+
+/* ── Hero Section ─────────────────────────────────────────────────── */
+.mh-home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.home-ovimg {
+  width: 100%;
+  position: relative;
+}
+
+.mh-header-info { padding: 2rem 0; }
+
+.mh-promo { margin-bottom: 1rem; }
+
+.mh-header-info h2 { font-size: 2.8rem; }
+.mh-header-info h4 { font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+.mh-header-info ul { margin-bottom: 1.5rem; }
+.mh-header-info ul li {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .5rem;
+}
+
+.social-icon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.hero-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-border {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: visible;
+  position: relative;
+}
+
+.img-border img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ── About Section ────────────────────────────────────────────────── */
+.mh-about { }
+
+.mh-about-img { margin-bottom: 2rem; }
+
+.mh-about-inner h2 { font-size: 2rem; }
+
+.mh-about-tag ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.5rem 0;
+}
+
+.mh-about-extra {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+}
+
+/* ── Service Section ──────────────────────────────────────────────── */
+.mh-service { }
+
+.mh-service-item {
+  padding: 2rem;
+  border-radius: 16px;
+  height: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.mh-service-item i {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Skills Section ───────────────────────────────────────────────── */
+.mh-skills { }
+
+.mh-skills-inner { }
+
+.each-skills { margin-top: 1rem; }
+
+.candidatos { margin-bottom: 1.25rem; }
+
+.parcial .info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  border-radius: 99px;
+  overflow: hidden;
+  background: rgba(255,255,255,.08);
+}
+
+.percentagem {
+  height: 100%;
+  border-radius: 99px;
+}
+
+.mh-professional-progress {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.mh-professional-progress li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+}
+
+.pr-skill-name {
+  text-align: center;
+  font-size: .8rem;
+}
+
+/* ── Experience / Education ───────────────────────────────────────── */
+.mh-experince { }
+.bolor-overlay { }
+
+.mh-education h3,
+.mh-work h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.mh-education-deatils,
+.mh-experience-deatils { }
+
+.mh-education-item,
+.mh-work-item {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.mh-education-item h4,
+.mh-work-item h4 {
+  font-size: .95rem;
+  margin-bottom: .3rem;
+}
+
+.mh-eduyear {
+  display: inline-block;
+  font-size: .75rem;
+  margin-bottom: .5rem;
+}
+
+.work-responsibility { margin-top: .5rem; }
+.work-responsibility li {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  margin-bottom: .35rem;
+  font-size: .85rem;
+}
+.work-responsibility li i { font-size: .4rem; margin-top: .55rem; }
+
+/* ── Testimonials ─────────────────────────────────────────────────── */
+.mh-testimonial { }
+.home-v-img { }
+
+#mh-client-review { }
+
+.each-client-item { padding: 0 .75rem; }
+
+.mh-client-item {
+  padding: 1.75rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.mh-client-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.25rem;
+}
+
+.mh-client-item h4 { font-size: .9rem; }
+
+/* ── Footer / Contact ─────────────────────────────────────────────── */
+.mh-footer { }
+.map-image { }
+
+.mh-footer-address { margin-bottom: 2rem; }
+
+.mh-address-footer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.each-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.each-info h4 {
+  font-size: .85rem;
+  margin-bottom: .2rem;
+}
+
+.single-form {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.single-form .form-control {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  padding: .85rem 1rem;
+  font-size: .9rem;
+  margin-bottom: .85rem;
+  transition: border-color .3s, box-shadow .3s;
+}
+
+.single-form .form-control:focus { outline: none; }
+
+textarea.form-control { resize: vertical; }
+
+.btn-form { margin-top: .5rem; }
+
+.btn-fill {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .75rem 1.75rem;
+  font-size: .85rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.btn-block { width: 100%; justify-content: center; }
+
+#msgSubmit {
+  padding: .75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: .95rem;
+}
+
+.mh-copyright {
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+.mh-copyright p { font-size: .8rem; }
+
+/* ── Shadows ──────────────────────────────────────────────────────── */
+.shadow-1 { box-shadow: 0 4px 20px rgba(0,0,0,.3); }
+.shadow-2 { box-shadow: 0 8px 40px rgba(0,0,0,.4); }
+.black-shadow-1 { box-shadow: 0 4px 20px rgba(0,0,0,.5); }
+
+/* ── Owl Carousel fixes ───────────────────────────────────────────── */
+.owl-carousel { display: none; width: 100%; }
+.owl-carousel.owl-loaded { display: block; }
+.owl-stage-outer { overflow: hidden; }
+.owl-item { float: left; }

@@ -1,0 +1,180 @@
+/* =====================================================================
+   SHANKS_DEV — responsive.css
+   ===================================================================== */
+
+/* ── Large desktops (≥1200px) ─────────────────────────────────────── */
+@media (min-width: 1200px) {
+  .mh-header-info h2 { font-size: 3.4rem; }
+  .img-border { width: 360px; height: 360px; }
+}
+
+/* ── Desktops (992px – 1199px) ────────────────────────────────────── */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .mh-header-info h2 { font-size: 2.6rem; }
+  .img-border { width: 300px; height: 300px; }
+}
+
+/* ── Tablets landscape (768px – 991px) ────────────────────────────── */
+@media (min-width: 768px) and (max-width: 991px) {
+  .mh-home { padding-top: 90px; }
+  .mh-header-info h2 { font-size: 2.2rem; }
+  .mh-header-info h4 { font-size: 1rem; }
+
+  .img-border { width: 260px; height: 260px; }
+
+  .section-separator { padding: 60px 0; }
+
+  .mh-professional-progress { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+  .navbar-nav .nav-link { padding: .4rem .7rem !important; font-size: .8rem; }
+
+  .mh-service-item { margin-bottom: 1.5rem; }
+}
+
+/* ── Tablets portrait & large phones (576px – 767px) ──────────────── */
+@media (min-width: 576px) and (max-width: 767px) {
+  .mh-home {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  .xs-column-reverse { flex-direction: column-reverse; }
+
+  .mh-header-info h2 { font-size: 2rem; }
+  .mh-header-info h4 { font-size: .95rem; }
+  .mh-header-info { text-align: center; }
+  .mh-header-info ul { justify-content: center; }
+  .mh-header-info ul li { justify-content: center; }
+  .social-icon { justify-content: center; }
+
+  .img-border {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-img { margin-bottom: 1.5rem; }
+
+  .section-separator { padding: 50px 0; }
+
+  .mh-about-img { margin-bottom: 2rem; }
+  .mh-about-inner { text-align: left; }
+
+  .mh-service-item { margin-bottom: 1.5rem; }
+
+  .mh-professional-progress { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+  .mh-address-footer-item { margin-bottom: 1rem; }
+
+  .single-form { padding: 1.5rem !important; }
+
+  .mh-copyright .col-sm-6 {
+    text-align: center !important;
+    margin-bottom: .75rem;
+  }
+  .mh-copyright .social-icon { justify-content: center; }
+}
+
+/* ── Small phones (≤575px) ────────────────────────────────────────── */
+@media (max-width: 575px) {
+  .mh-home {
+    padding-top: 75px;
+    padding-bottom: 50px;
+  }
+
+  .xs-column-reverse { flex-direction: column-reverse; }
+
+  .mh-header-info {
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+  .mh-header-info h2 { font-size: 1.8rem; }
+  .mh-header-info h4 { font-size: .9rem; }
+  .mh-header-info ul li { justify-content: center; font-size: .82rem; }
+  .social-icon { justify-content: center; }
+
+  .img-border {
+    width: 190px;
+    height: 190px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .hero-img { margin-bottom: 1.5rem; }
+
+  .section-separator { padding: 45px 0; }
+
+  .mh-about-img { margin-bottom: 1.5rem; }
+  .mh-about-inner h2 { font-size: 1.6rem; }
+
+  .mh-service-item {
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+  }
+
+  .mh-professional-progress { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .mh-education h3,
+  .mh-work h3 { font-size: 1.15rem; }
+
+  .mh-education-item h4,
+  .mh-work-item h4 { font-size: .88rem; }
+
+  .mh-address-footer-item {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .single-form { padding: 1.25rem !important; }
+
+  .btn-fill { padding: .7rem 1.25rem; font-size: .8rem; }
+
+  .mh-copyright .col-sm-6 {
+    text-align: center !important;
+    margin-bottom: .75rem;
+  }
+  .mh-copyright .social-icon { justify-content: center; }
+
+  .mh-about-extra { font-size: .82rem; }
+
+  /* Navbar mobile */
+  .navbar-collapse {
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255,255,255,.06);
+    margin-top: .5rem;
+  }
+  .navbar-nav .nav-link {
+    padding: .6rem 0 !important;
+    font-size: .82rem;
+  }
+}
+
+/* ── Navbar toggler ───────────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .navbar-toggler {
+    border: 1px solid rgba(255,255,255,.15);
+    padding: .4rem .6rem;
+    border-radius: 6px;
+  }
+  .navbar-toggler-icon {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #e8edf5;
+    position: relative;
+    border-radius: 99px;
+  }
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e8edf5;
+    border-radius: 99px;
+    transition: transform .3s ease;
+  }
+  .navbar-toggler-icon::before { top: -6px; }
+  .navbar-toggler-icon::after  { top:  6px; }
+}
