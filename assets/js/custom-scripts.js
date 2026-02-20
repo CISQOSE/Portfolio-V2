@@ -30,6 +30,27 @@
     $('.navbar-collapse').collapse('hide');
   });
 
+
+  /* ── Menu mobile — fermeture au clic sur un lien ──────────────────── */
+  $(document).on('click', '.navbar-nav .nav-link', function () {
+    var $toggle = $('.navbar-toggler');
+    var $collapse = $('.navbar-collapse');
+    if ($collapse.hasClass('show')) {
+      $toggle.click();
+    }
+  });
+
+  /* Fermeture en cliquant en dehors du menu */
+  $(document).on('click', function (e) {
+    var $collapse = $('.navbar-collapse');
+    if ($collapse.hasClass('show')) {
+      var $nav = $('.mh-nav');
+      if (!$nav.is(e.target) && $nav.find(e.target).length === 0) {
+        $('.navbar-toggler').click();
+      }
+    }
+  });
+
   /* ── Active nav on scroll — moving underline ─────────────────────── */
   function updateActiveNav() {
     var scrollPos = $(document).scrollTop() + 120;
@@ -71,102 +92,26 @@
   $(window).on('load', updateActiveNav);
   setTimeout(updateActiveNav, 400);
 
-  /* ── Testimonials — scroll natif (v4) ────────────────────────────── */
-  (function () {
-    var wrap    = document.querySelector('.testi-track-wrap');
-    var track   = document.getElementById('testi-track');
-    var dotsEl  = document.getElementById('testi-dots');
-    var btnP    = document.getElementById('testi-prev');
-    var btnN    = document.getElementById('testi-next');
-    if (!track || !wrap) return;
-
-    var dots   = dotsEl ? dotsEl.querySelectorAll('.testi-dot') : [];
-    var timer  = null;
-    var DELAY  = 5000;
-
-    /* Largeur d'un pas = 1 card + gap */
-    function stepW() {
-      var card = track.querySelector('.testi-card');
-      if (!card) return wrap.offsetWidth;
-      var gap = 20;
-      var vis = window.innerWidth <= 575 ? 1 : (window.innerWidth <= 991 ? 2 : 3);
-      return (wrap.offsetWidth - gap * (vis - 1)) / vis + gap;
-    }
-
-    /* Index courant basé sur scrollLeft */
-    function getIdx() {
-      return Math.round(track.scrollLeft / stepW());
-    }
-
-    /* Nb max d'index */
-    function getMax() {
-      var vis = window.innerWidth <= 575 ? 1 : (window.innerWidth <= 991 ? 2 : 3);
-      return Math.max(0, track.querySelectorAll('.testi-card').length - vis);
-    }
-
-    /* Aller à un index */
-    function goTo(idx) {
-      var max = getMax();
-      idx = Math.max(0, Math.min(idx, max));
-      track.scrollTo({ left: idx * stepW(), behavior: 'smooth' });
-    }
-
-    /* Mettre à jour dots + boutons */
-    function updateUI() {
-      var idx = getIdx();
-      var max = getMax();
-      for (var i = 0; i < dots.length; i++) {
-        dots[i].classList.toggle('active', i === idx);
+  /* ── Owl Carousel — témoignages ──────────────────────────────────── */
+  var $review = $('#mh-client-review');
+  if ($review.length && typeof $.fn.owlCarousel !== 'undefined') {
+    $review.owlCarousel({
+      loop               : true,
+      margin             : 24,
+      nav                : false,
+      dots               : true,
+      autoplay           : true,
+      autoplayTimeout    : 5000,
+      autoplayHoverPause : true,
+      smartSpeed         : 600,
+      responsive: {
+        0   : { items: 1 },
+        576 : { items: 1 },
+        768 : { items: 2 },
+        992 : { items: 3 }
       }
-      if (btnP) btnP.disabled = (idx <= 0);
-      if (btnN) btnN.disabled = (idx >= max);
-    }
-
-    /* Auto */
-    function startAuto() {
-      stopAuto();
-      timer = setInterval(function () {
-        var idx = getIdx();
-        goTo(idx >= getMax() ? 0 : idx + 1);
-      }, DELAY);
-    }
-    function stopAuto() { clearInterval(timer); timer = null; }
-
-    /* Boutons */
-    if (btnN) btnN.addEventListener('click', function (e) {
-      e.preventDefault(); goTo(getIdx() + 1); startAuto();
     });
-    if (btnP) btnP.addEventListener('click', function (e) {
-      e.preventDefault(); goTo(getIdx() - 1); startAuto();
-    });
-
-    /* Dots */
-    for (var d = 0; d < dots.length; d++) {
-      (function (i) {
-        dots[i].addEventListener('click', function () { goTo(i); startAuto(); });
-      })(d);
-    }
-
-    /* Sync dots/boutons au scroll */
-    track.addEventListener('scroll', updateUI, { passive: true });
-
-    /* Pause hover */
-    wrap.addEventListener('mouseenter', stopAuto);
-    wrap.addEventListener('mouseleave', startAuto);
-
-    /* Resize */
-    window.addEventListener('resize', function () {
-      updateUI();
-    });
-
-    /* Init après layout */
-    setTimeout(function () {
-      goTo(0);
-      updateUI();
-      startAuto();
-    }, 200);
-  })();
-
+  }
 
   /* ── Skills — run once when section is visible ────────────────────── */
   var skillsDone = false;

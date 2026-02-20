@@ -112,6 +112,8 @@
   <!-- Redesign override — loads LAST -->
   <link rel="stylesheet" href="assets/css/redesign.css">
 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="icon" href="assets/favicon.svg">
 
   <style>
@@ -142,7 +144,11 @@
             data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon icon"></span>
+            <span class="ham-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -205,10 +211,7 @@
 
             </div>
 
-            <div class="mh-about-extra wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.65s">
-              <p><strong>Langues :</strong> Français (courant) · Anglais (bon niveau)</p>
-              <p><strong>Intérêts :</strong> Jeux vidéo · Football · Basketball · Nature & Découverte</p>
-            </div>
+
           </div>
 
           <!-- Photo droite -->
@@ -690,32 +693,7 @@
               </div>
             </div>
 
-            <!-- Expériences associatives -->
-            <div class="mh-work" style="margin-top:2.5rem;">
-              <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Expériences Associatives</h3>
-              <div class="mh-experience-deatils">
-
-                <div class="mh-work-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                  <h4>Président du Club EVF</h4>
-                  <div class="mh-eduyear">2016 – 2017</div>
-                  <span>Responsabilités :</span>
-                  <ul class="work-responsibility">
-                    <li><i class="fa-solid fa-circle"></i>Organisation d'activités, gestion d'équipe et représentation du club.</li>
-                  </ul>
-                </div>
-
-                <div class="mh-work-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
-                  <h4>Membre actif — Greenpeace</h4>
-                  <div class="mh-eduyear">2018 – 2019</div>
-                  <span>Activités :</span>
-                  <ul class="work-responsibility">
-                    <li><i class="fa-solid fa-circle"></i>Participation à des campagnes de sensibilisation environnementale.</li>
-                  </ul>
-                </div>
-
-              </div>
-            </div>
-          </div>
+               </div>
 
         </div>
       </div>
@@ -734,68 +712,67 @@
             </div>
           </div>
 
-          <!-- Scroll horizontal natif -->
-          <div class="col-12">
-            <div class="testi-track-wrap">
-              <div class="testi-track" id="testi-track">
+          <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+            <div class="testi-list">
 
-                <div class="testi-card">
-                  <div class="testi-quote">&ldquo;</div>
-                  <div class="testi-avatar">
-                    <img src="assets/images/apple-icon-72x72.png" alt="Avatar Mouhamed">
+              <div class="testi-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                <div class="testi-item-header">
+                  <div class="testi-avatar-sm">
+                    <img src="assets/images/apple-icon-72x72.png" alt="Mouhamed">
                   </div>
-                  <p>Travailler avec Babacar a été un vrai plaisir. Sa maîtrise technique, sa rigueur et son professionnalisme sont vraiment impressionnants. Je le recommande vivement.</p>
-                  <h4>Mouhamed</h4>
-                  <span>Client</span>
-                </div>
-
-                <div class="testi-card">
-                  <div class="testi-quote">&ldquo;</div>
-                  <div class="testi-avatar">
-                    <img src="assets/images/apple-icon-72x72.png" alt="Avatar Ibrahima">
+                  <div>
+                    <h4>Mouhamed</h4>
+                    <div class="testi-role">Client</div>
                   </div>
-                  <p>Babacar est un développeur exceptionnel avec une capacité unique à résoudre des problèmes complexes. Très bon collaborateur, toujours investi dans les projets.</p>
-                  <h4>Ibrahima</h4>
-                  <span>Collègue</span>
                 </div>
+                <p>Travailler avec Babacar a été un vrai plaisir. Sa maîtrise technique, sa rigueur et son professionnalisme sont vraiment impressionnants. Je le recommande vivement.</p>
+              </div>
 
-                <div class="testi-card">
-                  <div class="testi-quote">&ldquo;</div>
-                  <div class="testi-avatar">
-                    <img src="assets/images/apple-icon-72x72.png" alt="Avatar DG MBC.SAS">
+              <div class="testi-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
+                <div class="testi-item-header">
+                  <div class="testi-avatar-sm">
+                    <img src="assets/images/apple-icon-72x72.png" alt="Ibrahima">
                   </div>
-                  <p>Babacar a su apporter une réelle valeur ajoutée à notre équipe. Sa compréhension des technologies web et sa capacité à collaborer efficacement en font un atout précieux.</p>
-                  <h4>DG MBC.SAS</h4>
-                  <span>Client</span>
-                </div>
-
-                <div class="testi-card">
-                  <div class="testi-quote">&ldquo;</div>
-                  <div class="testi-avatar">
-                    <img src="assets/images/apple-icon-72x72.png" alt="Avatar El Hadj Y. Fall">
+                  <div>
+                    <h4>Ibrahima</h4>
+                    <div class="testi-role">Collègue</div>
                   </div>
-                  <p>Je confirme les expériences professionnelles de Babacar au sein de CBS-TECH. Sérieux, ponctuel et motivé — un jeune talent à suivre.</p>
-                  <h4>El Hadj Y. Fall</h4>
-                  <span>PDG CBS-TECH · Référence</span>
                 </div>
+                <p>Babacar est un développeur exceptionnel avec une capacité unique à résoudre des problèmes complexes. Très bon collaborateur, toujours investi dans les projets.</p>
+              </div>
 
-              </div><!-- /testi-track -->
+            </div>
+          </div>
 
-              <!-- Boutons navigation -->
-              <button class="testi-btn testi-btn--prev" id="testi-prev" aria-label="Précédent">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <button class="testi-btn testi-btn--next" id="testi-next" aria-label="Suivant">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-            </div><!-- /testi-track-wrap -->
+          <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+            <div class="testi-list">
 
-            <!-- Dots -->
-            <div class="testi-dots" id="testi-dots">
-              <span class="testi-dot active" data-idx="0"></span>
-              <span class="testi-dot" data-idx="1"></span>
-              <span class="testi-dot" data-idx="2"></span>
-              <span class="testi-dot" data-idx="3"></span>
+              <div class="testi-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
+                <div class="testi-item-header">
+                  <div class="testi-avatar-sm">
+                    <img src="assets/images/apple-icon-72x72.png" alt="DG MBC.SAS">
+                  </div>
+                  <div>
+                    <h4>DG MBC.SAS</h4>
+                    <div class="testi-role">Client</div>
+                  </div>
+                </div>
+                <p>Babacar a su apporter une réelle valeur ajoutée à notre équipe. Sa compréhension des technologies web et sa capacité à collaborer efficacement en font un atout précieux.</p>
+              </div>
+
+              <div class="testi-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
+                <div class="testi-item-header">
+                  <div class="testi-avatar-sm">
+                    <img src="assets/images/apple-icon-72x72.png" alt="El Hadj Y. Fall">
+                  </div>
+                  <div>
+                    <h4>El Hadj Y. Fall</h4>
+                    <div class="testi-role">PDG CBS-TECH · Référence</div>
+                  </div>
+                </div>
+                <p>Je confirme les expériences professionnelles de Babacar au sein de CBS-TECH. Sérieux, ponctuel et motivé — un jeune talent à suivre.</p>
+              </div>
+
             </div>
           </div>
 
@@ -853,20 +830,9 @@
 
           <!-- Formulaire de contact -->
           <div class="col-sm-12 col-md-8 offset-md-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-            <form id="contactForm"
-                  class="single-form quate-form"
-                  method="POST"
-                  action="https://formsubmit.co/bmsc1906@gmail.com"
-                  novalidate>
+            <form id="contactForm" class="single-form quate-form" novalidate>
 
-              <!-- FormSubmit config -->
-              <input type="hidden" name="_subject" value="📬 Nouveau message — Portfolio Shanks_Dev">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_autoresponse" value="Merci pour votre message ! Je vous répondrai dans les plus brefs délais. — Babacar (Shanks_Dev)">
-              <input type="hidden" name="_next" value="https://shanksdev.com/#mh-contact">
-
-              <div id="msgSubmit" class="h3 hidden"></div>
+              <div id="msgSubmit" class="contact-msg hidden"></div>
 
               <div class="row">
                 <div class="col-md-6 col-sm-12">
@@ -919,10 +885,75 @@
   <!-- =====================================================================
        SCRIPTS
        ===================================================================== -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/plugins/js/jquery.min.js"></script>
+  <script src="assets/plugins/js/jquery.min.js"></script>
   <script src="assets/plugins/js/popper.min.js"></script>
   <script src="assets/plugins/js/bootstrap.min.js"></script>
   <script src="assets/plugins/js/owl.carousel.js"></script>
   <script src="assets/plugins/js/validator.min.js"></script>
   <script src="assets/plugins/js/wow.min.js"></script>
-  <script src="assets/plu
+  <script src="assets/plugins/js/custom-scripts.js"></script>
+
+  <!-- EmailJS — Formulaire de contact -->
+  <script>
+    (function () {
+      // ── Initialisation EmailJS ──────────────────────────────────────────
+      // PUBLIC KEY : à remplacer par ta clé sur emailjs.com > Account > API Keys
+      emailjs.init({ publicKey: 'TON_PUBLIC_KEY' });
+
+      var form     = document.getElementById('contactForm');
+      var msgBox   = document.getElementById('msgSubmit');
+      var submitBtn= document.getElementById('form-submit');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Validation basique
+        var prenom  = document.getElementById('prenom').value.trim();
+        var nom     = document.getElementById('nom').value.trim();
+        var email   = document.getElementById('email').value.trim();
+        var message = document.getElementById('message').value.trim();
+        if (!prenom || !nom || !email || !message) {
+          showMsg('Merci de remplir tous les champs.', 'error');
+          return;
+        }
+
+        // État chargement
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Envoi… &nbsp;<i class="fa-solid fa-circle-notch fa-spin"></i>';
+
+        // Paramètres envoyés au template EmailJS
+        var params = {
+          from_name   : prenom + ' ' + nom,
+          from_email  : email,
+          message     : message,
+          to_email    : 'bmsc1906@gmail.com'
+        };
+
+        // SERVICE ID + TEMPLATE ID : à remplacer (emailjs.com > Email Services / Templates)
+        emailjs.send('TON_SERVICE_ID', 'TON_TEMPLATE_ID', params)
+          .then(function () {
+            showMsg('✅ Message envoyé ! Je vous répondrai rapidement.', 'success');
+            form.reset();
+          })
+          .catch(function (err) {
+            console.error('EmailJS error:', err);
+            showMsg('❌ Erreur lors de l'envoi. Réessayez ou contactez-moi directement.', 'error');
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Envoyer &nbsp;<i class="fa-solid fa-paper-plane"></i>';
+          });
+      });
+
+      function showMsg(text, type) {
+        msgBox.textContent = text;
+        msgBox.className   = 'contact-msg ' + type;
+        msgBox.style.display = 'block';
+        setTimeout(function () { msgBox.style.display = 'none'; }, 6000);
+      }
+    })();
+  </script>
+
+</body>
+</html>
