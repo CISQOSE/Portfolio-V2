@@ -140,7 +140,7 @@ img { max-width: 100%; display: block; }
   position: relative; z-index: 9999;
   cursor: pointer;
   transition: border-color .25s ease, background .25s ease;
-  display: flex !important;
+  display: none !important;      /* caché par défaut sur desktop */
   align-items: center;
   justify-content: center;
   width: 42px; height: 42px;
@@ -899,6 +899,9 @@ textarea.form-control { resize: vertical; min-height: 130px; }
 
 /* ── Tablet portrait (768–991px) ───────────────────────────────── */
 @media (max-width: 991px) {
+  /* Bouton hamburger visible uniquement ici */
+  .navbar-toggler { display: flex !important; }
+
   /* ── Menu hamburger redesigné ── */
   .navbar-collapse {
     position: fixed;
