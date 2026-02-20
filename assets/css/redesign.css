@@ -239,6 +239,19 @@ img { max-width: 100%; display: block; }
   word-break: keep-all;
 }
 
+
+/* Hero typing cursor */
+.hero-cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 300;
+  animation: blink-cursor .75s step-end infinite;
+  margin-left: 1px;
+}
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
 .mh-header-info h4 {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300; font-size: 1.05rem;
@@ -369,6 +382,7 @@ img { max-width: 100%; display: block; }
    SERVICES
    ===================================================================== */
 .mh-service { background: var(--bg); }
+.mh-service .section-title { margin-bottom: 2rem; }
 
 .mh-service-item {
   padding: 2.25rem 2rem; border-radius: var(--radius-lg);
@@ -786,7 +800,7 @@ img { max-width: 100%; display: block; }
   transition: transform var(--t) var(--ease), border-color var(--t) var(--ease);
 }
 /* Make Bootstrap col stretch to full height */
-.mh-footer-address { margin-top: 1.75rem; }
+.mh-footer-address { margin-top: 2.5rem; }
 .mh-footer-address .row { align-items: stretch; row-gap: 1rem; }
 .mh-footer-address .row > [class*="col"] { display: flex; flex-direction: column; margin-bottom: 0 !important; }
 .mh-address-footer-item:hover { transform: translateY(-3px); border-color: var(--border-acc); }
@@ -1114,7 +1128,20 @@ textarea.form-control { resize: vertical; min-height: 130px; }
   .section-separator { padding: 10px 0; }
 
   .mh-header-info h2 { font-size: 1.85rem; letter-spacing: -.03em; }
-  .mh-header-info h4 { font-size: .9rem; }
+  
+/* Hero typing cursor */
+.hero-cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 300;
+  animation: blink-cursor .75s step-end infinite;
+  margin-left: 1px;
+}
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.mh-header-info h4 { font-size: .9rem; }
   .img-border { width: 140px; height: 140px; }
   .navbar-brand h2 { font-size: 1.15rem; }
 

@@ -917,15 +917,4 @@
         var nom     = document.getElementById('nom').value.trim();
         var email   = document.getElementById('email').value.trim();
         var message = document.getElementById('message').value.trim();
-        if (!prenom || !nom || !email || !message) {
-          showMsg('Merci de remplir tous les champs.', 'error');
-          return;
-        }
-
-        // État chargement
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Envoi… &nbsp;<i class="fa-solid fa-circle-notch fa-spin"></i>';
-
-        // Paramètres envoyés au template EmailJS
-        var params = {
-          from_name   : prenom +
+        if (!prenom || !nom || !email || 
