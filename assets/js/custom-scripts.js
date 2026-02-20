@@ -71,112 +71,102 @@
   $(window).on('load', updateActiveNav);
   setTimeout(updateActiveNav, 400);
 
-  /* ── Testimonials — horizontal slider ────────────────────────────── */
+  /* ── Testimonials — scroll natif (v4) ────────────────────────────── */
   (function () {
-    var track     = document.getElementById('testi-track');
-    var dotsWrap  = document.getElementById('testi-dots');
-    var btnPrev   = document.getElementById('testi-prev');
-    var btnNext   = document.getElementById('testi-next');
-    if (!track) return;
+    var wrap    = document.querySelector('.testi-track-wrap');
+    var track   = document.getElementById('testi-track');
+    var dotsEl  = document.getElementById('testi-dots');
+    var btnP    = document.getElementById('testi-prev');
+    var btnN    = document.getElementById('testi-next');
+    if (!track || !wrap) return;
 
-    var cards     = track.querySelectorAll('.testi-card');
-    var dots      = dotsWrap ? dotsWrap.querySelectorAll('.testi-dot') : [];
-    var total     = cards.length;
-    var current   = 0;
-    var autoTimer = null;
-    var visibleCount = 3; // desktop default
+    var dots   = dotsEl ? dotsEl.querySelectorAll('.testi-dot') : [];
+    var timer  = null;
+    var DELAY  = 5000;
 
-    function getVisible() {
-      var w = window.innerWidth;
-      if (w <= 575)  return 1;
-      if (w <= 991)  return 2;
-      return 3;
+    /* Largeur d'un pas = 1 card + gap */
+    function stepW() {
+      var card = track.querySelector('.testi-card');
+      if (!card) return wrap.offsetWidth;
+      var gap = 20;
+      var vis = window.innerWidth <= 575 ? 1 : (window.innerWidth <= 991 ? 2 : 3);
+      return (wrap.offsetWidth - gap * (vis - 1)) / vis + gap;
     }
 
-    function getMaxIndex() {
-      return Math.max(0, total - getVisible());
+    /* Index courant basé sur scrollLeft */
+    function getIdx() {
+      return Math.round(track.scrollLeft / stepW());
     }
 
+    /* Nb max d'index */
+    function getMax() {
+      var vis = window.innerWidth <= 575 ? 1 : (window.innerWidth <= 991 ? 2 : 3);
+      return Math.max(0, track.querySelectorAll('.testi-card').length - vis);
+    }
+
+    /* Aller à un index */
     function goTo(idx) {
-      visibleCount = getVisible();
-      var max = getMaxIndex();
-      current = Math.max(0, Math.min(idx, max));
-
-      // Calc card width + gap
-      var cardEl   = cards[0];
-      var gap      = 20; // 1.25rem ≈ 20px
-      var cardW    = cardEl.getBoundingClientRect().width;
-      var offset   = current * (cardW + gap);
-      track.style.transform = 'translateX(-' + offset + 'px)';
-
-      // Update dots
-      for (var i = 0; i < dots.length; i++) {
-        dots[i].classList.toggle('active', i === current);
-      }
-
-      // Update buttons
-      if (btnPrev) btnPrev.disabled = (current === 0);
-      if (btnNext) btnNext.disabled = (current >= max);
+      var max = getMax();
+      idx = Math.max(0, Math.min(idx, max));
+      track.scrollTo({ left: idx * stepW(), behavior: 'smooth' });
     }
 
-    function next() { goTo(current + 1); }
-    function prev() { goTo(current - 1); }
+    /* Mettre à jour dots + boutons */
+    function updateUI() {
+      var idx = getIdx();
+      var max = getMax();
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('active', i === idx);
+      }
+      if (btnP) btnP.disabled = (idx <= 0);
+      if (btnN) btnN.disabled = (idx >= max);
+    }
 
+    /* Auto */
     function startAuto() {
       stopAuto();
-      autoTimer = setInterval(function () {
-        if (current >= getMaxIndex()) goTo(0);
-        else next();
-      }, 4500);
+      timer = setInterval(function () {
+        var idx = getIdx();
+        goTo(idx >= getMax() ? 0 : idx + 1);
+      }, DELAY);
     }
-    function stopAuto() { clearInterval(autoTimer); }
+    function stopAuto() { clearInterval(timer); timer = null; }
 
-    // Buttons
-    if (btnNext) btnNext.addEventListener('click', function () { next(); startAuto(); });
-    if (btnPrev) btnPrev.addEventListener('click', function () { prev(); startAuto(); });
+    /* Boutons */
+    if (btnN) btnN.addEventListener('click', function (e) {
+      e.preventDefault(); goTo(getIdx() + 1); startAuto();
+    });
+    if (btnP) btnP.addEventListener('click', function (e) {
+      e.preventDefault(); goTo(getIdx() - 1); startAuto();
+    });
 
-    // Dots
+    /* Dots */
     for (var d = 0; d < dots.length; d++) {
-      (function(i) {
+      (function (i) {
         dots[i].addEventListener('click', function () { goTo(i); startAuto(); });
       })(d);
     }
 
-    // Drag / swipe
-    var dragStart = null, dragX = 0;
-    track.addEventListener('mousedown', function (e) {
-      dragStart = e.clientX; track.classList.add('grabbing'); stopAuto();
+    /* Sync dots/boutons au scroll */
+    track.addEventListener('scroll', updateUI, { passive: true });
+
+    /* Pause hover */
+    wrap.addEventListener('mouseenter', stopAuto);
+    wrap.addEventListener('mouseleave', startAuto);
+
+    /* Resize */
+    window.addEventListener('resize', function () {
+      updateUI();
     });
-    document.addEventListener('mouseup', function (e) {
-      if (dragStart === null) return;
-      dragX = e.clientX - dragStart; dragStart = null;
-      track.classList.remove('grabbing');
-      if (dragX < -50)       next();
-      else if (dragX > 50)   prev();
+
+    /* Init après layout */
+    setTimeout(function () {
+      goTo(0);
+      updateUI();
       startAuto();
-    });
-    track.addEventListener('touchstart', function (e) { dragStart = e.touches[0].clientX; stopAuto(); }, {passive:true});
-    track.addEventListener('touchend', function (e) {
-      if (dragStart === null) return;
-      dragX = e.changedTouches[0].clientX - dragStart; dragStart = null;
-      if (dragX < -50)       next();
-      else if (dragX > 50)   prev();
-      startAuto();
-    }, {passive:true});
-
-    // Pause on hover
-    track.addEventListener('mouseenter', stopAuto);
-    track.addEventListener('mouseleave', startAuto);
-
-    // Recalc on resize
-    window.addEventListener('resize', function () { goTo(Math.min(current, getMaxIndex())); });
-
-    // Init
-    goTo(0);
-    startAuto();
+    }, 200);
   })();
 
-  /* ── Owl Carousel — legacy (disabled, replaced by custom slider) ───── */
 
   /* ── Skills — run once when section is visible ────────────────────── */
   var skillsDone = false;

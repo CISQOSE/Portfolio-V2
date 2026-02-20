@@ -89,31 +89,47 @@ img { max-width: 100%; display: block; }
   color: var(--text-muted) !important;
   padding: .5rem 1.1rem !important;
   position: relative;
-  transition: color var(--t) var(--ease), font-weight 0s;
+  transition: color .3s var(--ease), font-weight 0s;
 }
+
+/* Le trait — invisible par défaut */
 .navbar-nav .nav-link::after {
   content: '';
   position: absolute; bottom: 2px; left: 1.1rem; right: 1.1rem;
-  height: 2px; background: var(--accent);
-  transform: scaleX(0); transform-origin: center;
-  transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .25s ease;
+  height: 2px;
+  background: var(--accent);
   border-radius: 99px;
-  box-shadow: 0 0 6px rgba(0,229,195,.55);
+  /* Caché : scaleX=0 ET opacity=0 */
+  transform: scaleX(0);
+  transform-origin: center;
   opacity: 0;
+  transition: transform .4s cubic-bezier(.4,0,.2,1),
+              opacity  .3s ease;
 }
-.navbar-nav .nav-link:hover { color: var(--text) !important; }
-.navbar-nav .nav-item.active .nav-link {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  letter-spacing: .08em;
+
+/* Hover : trait apparaît légèrement */
+.navbar-nav .nav-link:hover {
+  color: var(--text) !important;
 }
 .navbar-nav .nav-link:hover::after {
-  transform: scaleX(1); opacity: .65;
+  transform: scaleX(1);
+  opacity: .5;
+  box-shadow: none;
+}
+
+/* Section ACTIVE : trait plein + glow + gras */
+.navbar-nav .nav-item.active .nav-link {
+  color: #fff !important;
+  font-weight: 700 !important;
 }
 .navbar-nav .nav-item.active .nav-link::after {
-  transform: scaleX(1); opacity: 1;
-  box-shadow: 0 0 10px rgba(0,229,195,.75), 0 0 20px rgba(0,229,195,.3);
+  transform: scaleX(1);
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(0,229,195,.7), 0 0 18px rgba(0,229,195,.25);
 }
+
+/* Quand on quitte la section : retour à 0 via la transition CSS */
+/* (le JS retire la classe .active → ::after retourne à scaleX(0) opacity(0)) */
 
 .navbar-toggler {
   border: 1px solid var(--border-hover) !important;
@@ -641,37 +657,55 @@ img { max-width: 100%; display: block; }
 /* Track wrapper */
 .testi-track-wrap {
   position: relative;
-  overflow: hidden;
+  /* Espace latéral pour les boutons */
+  margin: 0 28px;
 }
 
-/* Scrollable row */
+/* Scrollable row — scroll natif */
 .testi-track {
   display: flex;
-  gap: 1.25rem;
-  transition: transform .55s cubic-bezier(.4,0,.2,1);
-  will-change: transform;
-  cursor: grab;
-  user-select: none;
-  padding-bottom: .25rem;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Masquer la scrollbar native */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  align-items: stretch;
+  padding-bottom: 4px;
 }
-.testi-track.grabbing { cursor: grabbing; }
+.testi-track::-webkit-scrollbar { display: none; }
 
-/* Card — 3 visible on desktop */
+/* Card — 3 visible desktop, 2 tablette, 1 mobile via CSS */
 .testi-card {
-  flex: 0 0 calc(33.333% - .84rem);
-  min-width: calc(33.333% - .84rem);
+  flex: 0 0 calc(33.333% - 14px);
+  scroll-snap-align: start;
   background: var(--bg-card-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 2rem 1.75rem 1.75rem;
   display: flex; flex-direction: column; align-items: center;
   text-align: center; position: relative; overflow: hidden;
+  box-sizing: border-box;
   transition: border-color var(--t) var(--ease), transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
 }
 .testi-card:hover {
   border-color: var(--border-acc);
   transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(0,0,0,.4);
+}
+
+/* Tablette: 2 cards */
+@media (max-width: 991px) {
+  .testi-card { flex: 0 0 calc(50% - 10px); }
+}
+
+/* Mobile: 1 card */
+@media (max-width: 575px) {
+  .testi-card { flex: 0 0 100%; }
+  .testi-track-wrap { margin: 0 20px; }
+  .testi-btn { width: 32px; height: 32px; font-size: .75rem; }
 }
 
 /* Big quote mark */
@@ -729,8 +763,8 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 4px 16px rgba(0,229,195,.35);
   transform: translateY(-50%) scale(1.1);
 }
-.testi-btn--prev { left: -20px; }
-.testi-btn--next { right: -20px; }
+.testi-btn--prev { left: -24px; }
+.testi-btn--next { right: -24px; }
 .testi-btn:disabled { opacity: .25; pointer-events: none; }
 
 /* Dots */
@@ -748,21 +782,7 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 0 8px rgba(0,229,195,.45);
 }
 
-/* Tablet: 2 cards */
-@media (max-width: 991px) {
-  .testi-card {
-    flex: 0 0 calc(50% - .63rem);
-    min-width: calc(50% - .63rem);
-  }
-}
-
-/* Mobile: 1 card */
-@media (max-width: 575px) {
-  .testi-card { flex: 0 0 100%; min-width: 100%; }
-  .testi-btn--prev { left: 0; }
-  .testi-btn--next { right: 0; }
-  .testi-btn { width: 34px; height: 34px; font-size: .75rem; }
-}
+/* Mobile handled above */
 
 /* =====================================================================
    FOOTER / CONTACT
