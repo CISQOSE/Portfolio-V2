@@ -20,35 +20,46 @@
     $header.toggleClass('nav-scroll', $(this).scrollTop() > 60);
   });
 
-  /* ── Smooth scroll ────────────────────────────────────────────────── */
+  /* ── Menu mobile — fermeture DOM pure (sans API Bootstrap) ───────── */
+  var $nav      = $('#navbarSupportedContent');
+  var $toggler  = $('.navbar-toggler');
+
+  function hideMenu() {
+    $nav.removeClass('show');
+    $toggler.attr('aria-expanded', 'false');
+  }
+
+  function menuIsOpen() {
+    return $nav.hasClass('show');
+  }
+
+  /* Clic sur un lien dans le menu : fermer immédiatement */
+  $nav.on('click', '.nav-link', function () {
+    if (menuIsOpen()) {
+      hideMenu();
+    }
+  });
+
+  /* Clic en dehors de la navbar : fermer */
+  $(document).on('click touchstart', function (e) {
+    if (menuIsOpen() && !$(e.target).closest('#mh-header').length) {
+      hideMenu();
+    }
+  });
+
+  /* ── Smooth scroll — fermer menu PUIS scroller ────────────────────── */
   $(document).on('click', 'a[href^="#"]', function (e) {
-    var hash   = this.hash;
+    var hash    = this.hash;
     var $target = $(hash);
     if (!$target.length) return;
     e.preventDefault();
-    $('html, body').animate({ scrollTop: $target.offset().top - 72 }, 550, 'swing');
-    $('.navbar-collapse').collapse('hide');
-  });
 
+    var wasOpen = menuIsOpen();
+    if (wasOpen) { hideMenu(); }
 
-  /* ── Menu mobile — fermeture au clic sur un lien ──────────────────── */
-  $(document).on('click', '.navbar-nav .nav-link', function () {
-    var $toggle = $('.navbar-toggler');
-    var $collapse = $('.navbar-collapse');
-    if ($collapse.hasClass('show')) {
-      $toggle.click();
-    }
-  });
-
-  /* Fermeture en cliquant en dehors du menu */
-  $(document).on('click', function (e) {
-    var $collapse = $('.navbar-collapse');
-    if ($collapse.hasClass('show')) {
-      var $nav = $('.mh-nav');
-      if (!$nav.is(e.target) && $nav.find(e.target).length === 0) {
-        $('.navbar-toggler').click();
-      }
-    }
+    setTimeout(function () {
+      $('html, body').animate({ scrollTop: $target.offset().top - 72 }, 500, 'swing');
+    }, wasOpen ? 300 : 0);
   });
 
   /* ── Active nav on scroll — moving underline ─────────────────────── */

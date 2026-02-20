@@ -73,7 +73,8 @@ img { max-width: 100%; display: block; }
   box-shadow: none !important;
 }
 .mh-header .overlay { display: none !important; }
-.mh-nav { padding: .9rem 0; }
+.mh-nav {
+  position: relative; padding: .9rem 0; }
 
 .navbar-brand h2 {
   font-family: 'Syne', sans-serif;
@@ -903,19 +904,23 @@ textarea.form-control { resize: vertical; min-height: 130px; }
   .navbar-toggler { display: flex !important; }
 
   /* ── Menu hamburger redesigné ── */
-  .navbar-collapse {
-    position: fixed;
-    top: 60px; left: 0; right: 0;
+  /* Bootstrap gère display via .collapse/.show — on gère juste l'apparence */
+  .navbar-collapse.show,
+  .navbar-collapse.collapsing {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
     background: #07090d;
     border-top: 1px solid var(--border-acc);
     border-bottom: 1px solid var(--border);
     padding: .5rem 1.5rem 1.25rem;
     z-index: 9998;
-    box-shadow: 0 24px 60px rgba(0,0,0,.85);
-    animation: menuSlideDown .22s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 24px 60px rgba(0,0,0,.95);
+  }
+  .navbar-collapse.show {
+    animation: menuSlideDown .22s ease;
   }
   @keyframes menuSlideDown {
-    from { opacity: 0; transform: translateY(-12px); }
+    from { opacity: 0; transform: translateY(-10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
   .navbar-nav { gap: 0; }
