@@ -772,7 +772,7 @@ img { max-width: 100%; display: block; }
 /* =====================================================================
    FOOTER / CONTACT
    ===================================================================== */
-.mh-footer { background: var(--bg); }
+.mh-footer { background: var(--bg); padding-bottom: .5rem; }
 .map-image { background: transparent !important; }
 
 .mh-address-footer-item {
@@ -836,19 +836,37 @@ textarea.form-control { resize: vertical; min-height: 130px; }
 }
 
 .mh-copyright {
-  padding-top: 1.75rem; margin-top: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: .75rem;
+  margin-top: 1.5rem;
   border-top: 1px solid var(--border);
 }
-/* Force row: text left, icons right on all screen sizes */
+/* Copyright + icônes sur la même ligne, bien alignés */
 .mh-copyright .row {
-  display: flex; align-items: center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap; gap: .75rem;
+  flex-wrap: nowrap;
+  gap: .5rem;
 }
-.mh-copyright .col-sm-6:first-child { flex: 0 0 auto; }
-.mh-copyright .col-sm-6:last-child  { flex: 0 0 auto; margin-left: auto; }
-.mh-copyright p { font-size: .78rem; color: var(--text-muted); margin: 0; }
-.mh-copyright .social-icon { margin-top: 0; justify-content: flex-end; }
+.mh-copyright .col-sm-6:first-child {
+  flex: 0 0 auto;
+}
+.mh-copyright .col-sm-6:last-child {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+.mh-copyright p {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin: 0;
+  white-space: nowrap;
+}
+.mh-copyright .social-icon {
+  margin-top: 0;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
 
 /* =====================================================================
    OVERRIDES
@@ -1081,11 +1099,11 @@ textarea.form-control { resize: vertical; min-height: 130px; }
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    gap: .75rem;
+    gap: .5rem;
   }
   .mh-copyright .col-sm-6 { width: 100%; text-align: center !important; }
   .mh-copyright .col-sm-6:last-child { margin-left: 0 !important; }
-  .mh-copyright p { text-align: center !important; }
+  .mh-copyright p { text-align: center !important; white-space: normal; }
   .mh-copyright .social-icon { justify-content: center !important; margin-top: 0; }
 }
 
