@@ -116,8 +116,6 @@
   <!-- Redesign override — loads LAST -->
   <link rel="stylesheet" href="assets/css/redesign.css">
 
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="icon" href="assets/favicon.svg">
 
   <style>
@@ -962,19 +960,8 @@
   <script src="assets/plugins/js/owl.carousel.js"></script>
   <script src="assets/plugins/js/validator.min.js"></script>
   <script src="assets/plugins/js/wow.min.js"></script>
-  <script src="assets/plugins/js/custom-scripts.js"></script>
+  <script src="assets/js/custom-scripts.js"></script>
 
-  <!-- EmailJS — Formulaire de contact -->
-  <script>
-    (function () {
-      // ── Initialisation EmailJS ──────────────────────────────────────────
-      // PUBLIC KEY : à remplacer par ta clé sur emailjs.com > Account > API Keys
-      emailjs.init({ publicKey: 'TON_PUBLIC_KEY' });
 
-      var form     = document.getElementById('contactForm');
-      var msgBox   = document.getElementById('msgSubmit');
-      var submitBtn= document.getElementById('form-submit');
-      if (!form) return;
-
-      form.addEventListener('submit', function (e) {
-   
+</body>
+</html>
