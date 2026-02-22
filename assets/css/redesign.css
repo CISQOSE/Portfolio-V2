@@ -191,7 +191,7 @@ img { max-width: 100%; display: block; }
   overflow: hidden; position: relative;
 }
 .mh-home .section-separator {
-  padding-top: 60px !important;
+  padding-top: 50px !important;
   padding-bottom: 20px !important;
 }
 .mh-home::before {

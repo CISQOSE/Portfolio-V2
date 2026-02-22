@@ -20,24 +20,33 @@
     $header.toggleClass('nav-scroll', $(this).scrollTop() > 60);
   });
 
-  /* ── Menu mobile — fermeture DOM pure (sans API Bootstrap) ───────── */
+  /* ── Menu mobile — ouverture & fermeture DOM pure ───────────────── */
   var $nav      = $('#navbarSupportedContent');
   var $toggler  = $('.navbar-toggler');
 
+  function showMenu() {
+    $nav.addClass('show');
+    $toggler.attr('aria-expanded', 'true').addClass('active');
+  }
+
   function hideMenu() {
     $nav.removeClass('show');
-    $toggler.attr('aria-expanded', 'false');
+    $toggler.attr('aria-expanded', 'false').removeClass('active');
   }
 
   function menuIsOpen() {
     return $nav.hasClass('show');
   }
 
+  /* Clic sur le bouton hamburger : toggle */
+  $toggler.on('click', function (e) {
+    e.stopPropagation();
+    if (menuIsOpen()) { hideMenu(); } else { showMenu(); }
+  });
+
   /* Clic sur un lien dans le menu : fermer immédiatement */
   $nav.on('click', '.nav-link', function () {
-    if (menuIsOpen()) {
-      hideMenu();
-    }
+    if (menuIsOpen()) { hideMenu(); }
   });
 
   /* Clic en dehors de la navbar : fermer */
