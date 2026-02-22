@@ -17,7 +17,7 @@
   --text:        #eaf0f8;
   --text-sub:    #c5d0df;
   --text-muted:  #6b7a8d;
-  --text-dim:    #2e3a4a;
+  --text-dim:    #7a8fa6;
   --border:      rgba(255,255,255,.055);
   --border-hover:rgba(255,255,255,.12);
   --border-acc:  rgba(0,229,195,.28);
@@ -823,12 +823,12 @@ img { max-width: 100%; display: block; }
 }
 
 .single-form .form-control {
-  background: var(--bg) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text) !important;
+  background: #111820 !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  color: #eaf0f8 !important;
   border-radius: 9px !important;
   padding: .9rem 1.1rem !important;
-  font-family: 'DM Sans', sans-serif; font-size: .9rem;
+  font-family: 'DM Sans', sans-serif; font-size: .95rem;
   width: 100%; display: block; margin-bottom: .9rem;
   transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
 }
