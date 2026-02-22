@@ -1170,3 +1170,24 @@ textarea.form-control { resize: vertical; min-height: 130px; }
   .mh-address-footer-item { flex-direction: row; align-items: center; }
   .each-icon { width: 36px; height: 36px; font-size: .85rem; }
 }
+
+/* ── Contact form — notifications ─────────────────────────────────── */
+.contact-msg {
+  display: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+  transition: opacity 0.5s ease;
+}
+.contact-msg--success {
+  background: rgba(0, 229, 195, 0.12);
+  border: 1px solid rgba(0, 229, 195, 0.45);
+  color: #00e5c3;
+}
+.contact-msg--error {
+  background: rgba(255, 80, 80, 0.12);
+  border: 1px solid rgba(255, 80, 80, 0.45);
+  color: #ff6b6b;
+}

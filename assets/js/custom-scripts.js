@@ -178,17 +178,74 @@
   $(window).on('scroll.skills', checkSkillsVisible);
   checkSkillsVisible(); // in case already visible on load
 
-  /* ── Contact form ─────────────────────────────────────────────────── */
-  var form = document.getElementById('contactForm');
-  var msg  = document.getElementById('msgSubmit');
+  /* ── Contact form — Vercel Serverless API ─────────────────────────── */
+  var form       = document.getElementById('contactForm');
+  var msg        = document.getElementById('msgSubmit');
+  var submitBtn  = document.getElementById('form-submit');
 
-  if (form && msg) {
+  if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      msg.classList.remove('hidden');
-      msg.textContent = 'Message envoyé avec succès ! Redirection…';
-      setTimeout(function () { form.submit(); }, 1400);
+
+      var prenom  = (document.getElementById('prenom')  || {}).value  || '';
+      var nom     = (document.getElementById('nom')     || {}).value  || '';
+      var email   = (document.getElementById('email')   || {}).value  || '';
+      var message = (document.getElementById('message') || {}).value  || '';
+
+      /* Validation minimale côté client */
+      if (!prenom || !email || !message) {
+        showContactMsg('error', '⚠️ Veuillez remplir tous les champs obligatoires.');
+        return;
+      }
+
+      /* État chargement */
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Envoi en cours… <i class=\"fa-solid fa-spinner fa-spin\"></i>';
+      }
+
+      fetch('/api/contact', {
+        method  : 'POST',
+        headers : { 'Content-Type': 'application/json' },
+        body    : JSON.stringify({ prenom: prenom, nom: nom, email: email, message: message })
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          showContactMsg('success', '✅ Message envoyé ! Je vous répondrai très bientôt.');
+          form.reset();
+        } else {
+          showContactMsg('error', '❌ ' + (data.error || "Erreur lors de l\'envoi. Réessayez."));
+        }
+      })
+      .catch(function () {
+        showContactMsg('error', '❌ Connexion impossible. Vérifiez votre réseau et réessayez.');
+      })
+      .finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Envoyer &nbsp;<i class=\"fa-solid fa-paper-plane\"></i>';
+        }
+      });
     });
+  }
+
+  /* Helper notification */
+  function showContactMsg(type, text) {
+    if (!msg) return;
+    msg.className = 'contact-msg contact-msg--' + type;
+    msg.textContent = text;
+    msg.style.display = 'block';
+    msg.style.opacity = '1';
+    clearTimeout(msg._hideTimer);
+    msg._hideTimer = setTimeout(function () {
+      msg.style.transition = 'opacity 0.5s';
+      msg.style.opacity = '0';
+      setTimeout(function () {
+        msg.style.display = 'none';
+        msg.style.opacity = '';
+      }, 500);
+    }, 6000);
   }
 
 
