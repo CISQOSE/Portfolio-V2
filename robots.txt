@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Bloquer les ressources inutiles pour les crawlers
+Disallow: /api/
+Disallow: /cdn-cgi/
+
+# Sitemap
+Sitemap: https://shanks-dev.vercel.app/sitemap.xml
+
+# Crawl delay pour éviter la surcharge
+Crawl-delay: 10
