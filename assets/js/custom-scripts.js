@@ -257,5 +257,29 @@
     }, 6000);
   }
 
+  /* ── Theme toggle — clair / sombre ───────────────────────────────── */
+  var $body      = $('body');
+  var $toggleBtn = $('#themeToggle');
+  var $ttLabel   = $('#ttLabel');
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      $body.addClass('light-theme');
+      $ttLabel.text('Mode sombre');
+    } else {
+      $body.removeClass('light-theme');
+      $ttLabel.text('Mode clair');
+    }
+  }
+
+  // Sombre par défaut, restaurer la préférence
+  applyTheme(localStorage.getItem('shanks-theme') || 'dark');
+
+  $toggleBtn.on('click', function (e) {
+    e.stopPropagation();
+    var next = $body.hasClass('light-theme') ? 'dark' : 'light';
+    applyTheme(next);
+    localStorage.setItem('shanks-theme', next);
+  });
 
   })(jQuery);

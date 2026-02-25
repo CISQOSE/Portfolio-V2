@@ -98,8 +98,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -117,7 +116,6 @@
   <!-- Redesign override — loads LAST -->
   <link rel="stylesheet" href="assets/css/redesign.css">
 
-  <link rel="preload" as="image" href="assets/images/Shanks.jpg" fetchpriority="high">
   <link rel="icon" href="assets/favicon.svg">
 
   <style>
@@ -162,6 +160,14 @@
               <li class="nav-item"><a class="nav-link" href="#mh-skills">Skills</a></li>
               <li class="nav-item"><a class="nav-link" href="#mh-experience">Expériences</a></li>
               <li class="nav-item"><a class="nav-link" href="#mh-contact">Contact</a></li>
+              <li class="nav-item nav-item--toggle">
+                <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+                  <span class="tt-track">
+                    <span class="tt-thumb"></span>
+                  </span>
+                  <span class="tt-label" id="ttLabel">Mode clair</span>
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -170,7 +176,6 @@
     </div>
   </header>
 
-  <main id="main-content">
   <!-- ── Hero / Accueil ─────────────────────────────────────────────────── -->
   <section class="mh-home" id="mh-home">
     <div class="home-ovimg">
@@ -223,7 +228,7 @@
           <div class="col-sm-12 col-md-5 col-lg-6">
             <div class="hero-img wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
               <div class="img-border">
-                <img src="assets/images/Shanks.jpg" alt="Photo de Babacar Mbemba Sylla CISSE" class="img-fluid" fetchpriority="high" width="540" height="600">
+                <img src="assets/images/Shanks.jpg" alt="Photo de Babacar Mbemba Sylla CISSE" class="img-fluid">
               </div>
             </div>
           </div>
@@ -240,7 +245,7 @@
 
         <div class="col-sm-12 col-md-6">
           <div class="mh-about-img shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-            <img src="assets/images/ab-img.png" alt="Illustration développeur web" class="img-fluid" loading="lazy" width="500" height="500">
+            <img src="assets/images/ab-img.png" alt="Illustration développeur web" class="img-fluid">
           </div>
         </div>
 
@@ -790,7 +795,7 @@
               <div class="testi-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
                 <div class="testi-item-header">
                   <div class="testi-avatar-sm">
-                    <img src="assets/images/apple-icon-72x72.png" alt="Mouhamed" loading="lazy" width="72" height="72">
+                    <img src="assets/images/apple-icon-72x72.png" alt="Mouhamed">
                   </div>
                   <div>
                     <h4>Mouhamed</h4>
@@ -803,7 +808,7 @@
               <div class="testi-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
                 <div class="testi-item-header">
                   <div class="testi-avatar-sm">
-                    <img src="assets/images/apple-icon-72x72.png" alt="Ibrahima" loading="lazy" width="72" height="72">
+                    <img src="assets/images/apple-icon-72x72.png" alt="Ibrahima">
                   </div>
                   <div>
                     <h4>Ibrahima</h4>
@@ -822,7 +827,7 @@
               <div class="testi-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
                 <div class="testi-item-header">
                   <div class="testi-avatar-sm">
-                    <img src="assets/images/apple-icon-72x72.png" alt="DG MBC.SAS" loading="lazy" width="72" height="72">
+                    <img src="assets/images/apple-icon-72x72.png" alt="DG MBC.SAS">
                   </div>
                   <div>
                     <h4>DG MBC.SAS</h4>
@@ -835,7 +840,7 @@
               <div class="testi-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
                 <div class="testi-item-header">
                   <div class="testi-avatar-sm">
-                    <img src="assets/images/apple-icon-72x72.png" alt="El Hadj Y. Fall" loading="lazy" width="72" height="72">
+                    <img src="assets/images/apple-icon-72x72.png" alt="El Hadj Y. Fall">
                   </div>
                   <div>
                     <h4>El Hadj Y. Fall</h4>
@@ -852,8 +857,6 @@
       </div>
     </div>
   </section>
-
-  </main>
 
   <!-- ── Contact / Footer ───────────────────────────────────────────────── -->
   <footer class="mh-footer" id="mh-contact">
