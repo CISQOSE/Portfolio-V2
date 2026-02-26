@@ -603,6 +603,11 @@ body.light-theme .theme-toggle__icons .icon-sun  { color: rgba(255,255,255,.9); 
   background: var(--bg-card) !important;
   border: 1px solid var(--border); border-radius: var(--radius-lg);
   padding: 2.25rem 2rem !important; max-width: none !important;
+  transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.single-form:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 32px rgba(0,229,195,.1) !important;
 }
 .single-form .form-control {
   background: #111820 !important;
@@ -1088,8 +1093,8 @@ body.light-theme .single-form .form-control:hover {
   border-color: var(--border-acc) !important;
 }
 
-/* Card formulaire — bordure verte permanente */
-body.light-theme .single-form {
-  border-color: var(--border-acc) !important;
-  box-shadow: 0 0 0 1px var(--border-acc), 0 8px 32px rgba(0,184,154,.08) !important;
+/* Card formulaire — bordure cyano AU SURVOL uniquement */
+body.light-theme .single-form:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 32px rgba(0,229,195,.12) !important;
 }
