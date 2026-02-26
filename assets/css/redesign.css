@@ -252,11 +252,13 @@ body.light-theme .theme-toggle__icons .icon-sun  { color: rgba(255,255,255,.9); 
   color: var(--text-muted) !important; font-size: .9rem;
   transition: all var(--t) var(--ease); background: transparent;
 }
+.social-icon li a i { color: inherit !important; }
 .social-icon li a:hover {
-  border-color: var(--border-acc); background: var(--accent-glow);
-  color: var(--accent) !important;
-  transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,229,195,.15);
+  border-color: var(--accent); background: var(--accent);
+  color: #fff !important;
+  transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,229,195,.4);
 }
+.social-icon li a:hover i { color: #fff !important; }
 
 .mh-about-extra {
   margin-top: 1.75rem; padding: 1rem 1.25rem;
@@ -892,8 +894,10 @@ body.light-theme .single-form .form-control::placeholder { color: var(--text-dim
 body.light-theme #msgSubmit { background: var(--accent-glow) !important; border-color: var(--border-acc) !important; color: var(--accent) !important; }
 body.light-theme .mh-copyright { border-top-color: var(--border) !important; }
 body.light-theme .mh-copyright p { color: var(--text-muted) !important; }
-body.light-theme .social-icon li a { color: var(--text-muted) !important; border-color: var(--border) !important; }
-body.light-theme .social-icon li a:hover { background: var(--accent) !important; border-color: var(--accent) !important; color: #fff !important; }
+body.light-theme .social-icon li a { color: var(--text-muted) !important; border-color: var(--border) !important; background: #fff !important; }
+body.light-theme .social-icon li a i { color: var(--text-muted) !important; }
+body.light-theme .social-icon li a:hover { background: var(--accent) !important; border-color: var(--accent) !important; color: #fff !important; box-shadow: 0 6px 20px rgba(0,229,195,.45) !important; }
+body.light-theme .social-icon li a:hover i { color: #fff !important; }
 body.light-theme .section-title h3 { color: var(--text) !important; }
 
 /* Bouton CV — texte visible en mode clair */
@@ -1084,9 +1088,8 @@ body.light-theme .single-form .form-control:hover {
   border-color: var(--border-acc) !important;
 }
 
-/* Card formulaire — bordure verte AU SURVOL uniquement */
-body.light-theme .single-form:hover {
-  border-color: var(--accent) !important;
-  box-shadow: 0 0 0 1px var(--accent), 0 8px 32px rgba(0,229,195,.12) !important;
-  transition: border-color .3s ease, box-shadow .3s ease;
+/* Card formulaire — bordure verte permanente */
+body.light-theme .single-form {
+  border-color: var(--border-acc) !important;
+  box-shadow: 0 0 0 1px var(--border-acc), 0 8px 32px rgba(0,184,154,.08) !important;
 }
