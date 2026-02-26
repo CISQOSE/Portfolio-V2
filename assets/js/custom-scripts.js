@@ -56,6 +56,34 @@
     }
   });
 
+  /* ── Theme toggle — clair / sombre ───────────────────────────────── */
+  var $body      = $('body');
+  var $toggleBtn = $('#themeToggle');
+  var $ttLabel   = $('#ttLabel');
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      $body.addClass('light-theme');
+      if ($ttLabel.length) $ttLabel.text('Mode sombre');
+    } else {
+      $body.removeClass('light-theme');
+      if ($ttLabel.length) $ttLabel.text('Mode clair');
+    }
+  }
+
+  // Sombre par défaut, restaurer la préférence
+  var savedTheme = 'dark';
+  try { savedTheme = localStorage.getItem('shanks-theme') || 'dark'; } catch(e) {}
+  applyTheme(savedTheme);
+
+  $toggleBtn.on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var next = $body.hasClass('light-theme') ? 'dark' : 'light';
+    applyTheme(next);
+    try { localStorage.setItem('shanks-theme', next); } catch(e) {}
+  });
+
   /* ── Smooth scroll — fermer menu PUIS scroller ────────────────────── */
   $(document).on('click', 'a[href^="#"]', function (e) {
     var hash    = this.hash;
@@ -256,30 +284,5 @@
       }, 500);
     }, 6000);
   }
-
-  /* ── Theme toggle — clair / sombre ───────────────────────────────── */
-  var $body      = $('body');
-  var $toggleBtn = $('#themeToggle');
-  var $ttLabel   = $('#ttLabel');
-
-  function applyTheme(theme) {
-    if (theme === 'light') {
-      $body.addClass('light-theme');
-      $ttLabel.text('Mode sombre');
-    } else {
-      $body.removeClass('light-theme');
-      $ttLabel.text('Mode clair');
-    }
-  }
-
-  // Sombre par défaut, restaurer la préférence
-  applyTheme(localStorage.getItem('shanks-theme') || 'dark');
-
-  $toggleBtn.on('click', function (e) {
-    e.stopPropagation();
-    var next = $body.hasClass('light-theme') ? 'dark' : 'light';
-    applyTheme(next);
-    localStorage.setItem('shanks-theme', next);
-  });
 
   })(jQuery);

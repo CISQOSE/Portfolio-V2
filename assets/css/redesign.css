@@ -466,7 +466,11 @@ body.light-theme .theme-toggle__icons .icon-sun  { color: rgba(255,255,255,.9); 
   border-radius: var(--radius); text-align: center;
   transition: border-color var(--t) var(--ease), transform var(--t) var(--ease);
 }
-.sk2-stat:hover { border-color: var(--border-acc); transform: translateY(-3px); }
+.sk2-stat:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 24px rgba(0,229,195,.2);
+}
 .sk2-stat-num {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.65rem; font-weight: 800;
@@ -852,6 +856,7 @@ body.light-theme .sk2-track { background: var(--bg-card-2) !important; }
 body.light-theme .sk2-soft-name { color: var(--text) !important; }
 body.light-theme .sk2-category { color: var(--accent) !important; background: var(--accent-glow) !important; border-color: var(--border-acc) !important; }
 body.light-theme .sk2-stat { background: var(--bg-card) !important; border-color: var(--border) !important; }
+body.light-theme .sk2-stat:hover { border-color: var(--accent) !important; box-shadow: 0 0 0 1px var(--accent), 0 8px 24px rgba(0,229,195,.18) !important; }
 body.light-theme .sk2-stat-label { color: var(--text-muted) !important; }
 body.light-theme .radar-wrap { background: var(--bg-card) !important; border-color: var(--border) !important; }
 
@@ -1079,8 +1084,9 @@ body.light-theme .single-form .form-control:hover {
   border-color: var(--border-acc) !important;
 }
 
-/* Card formulaire — bordure verte permanente */
-body.light-theme .single-form {
-  border-color: var(--border-acc) !important;
-  box-shadow: 0 0 0 1px var(--border-acc), 0 8px 32px rgba(0,184,154,.08) !important;
+/* Card formulaire — bordure verte AU SURVOL uniquement */
+body.light-theme .single-form:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 32px rgba(0,229,195,.12) !important;
+  transition: border-color .3s ease, box-shadow .3s ease;
 }
