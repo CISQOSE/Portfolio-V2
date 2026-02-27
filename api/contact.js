@@ -71,19 +71,14 @@ module.exports = async function handler(req, res) {
           <div style="padding:32px;">
             <p style="font-size:15px;margin-bottom:16px;">Bonjour <strong>${prenom} ${nom || ''}</strong>,</p>
 
-            <p style="font-size:14px;line-height:1.8;color:#c8d0db;">
+            <p style="font-size:14px;line-height:1.9;color:#c8d0db;">
               Je vous remercie de m'avoir contacté via mon portfolio.<br>
               Votre message a bien été reçu et je reviendrai vers vous dans les meilleurs délais.
             </p>
 
             <hr style="border:none;border-top:1px solid #222;margin:28px 0;">
 
-            <p style="color:#888;font-size:12px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em;">Récapitulatif de votre message</p>
-            <p style="background:#1a1a1a;padding:18px;border-radius:8px;line-height:1.7;color:#c8d0db;font-size:13px;white-space:pre-wrap;">${message}</p>
-
-            <hr style="border:none;border-top:1px solid #222;margin:28px 0;">
-
-            <p style="font-size:14px;line-height:1.8;color:#c8d0db;">
+            <p style="font-size:14px;line-height:1.9;color:#c8d0db;">
               Cordialement,<br>
               <strong style="color:#fff;">Babacar Mbemba Sylla CISSE</strong><br>
               <span style="color:#00e5c3;font-size:13px;">Développeur Fullstack &middot; Shanks_Dev</span>
@@ -91,7 +86,7 @@ module.exports = async function handler(req, res) {
           </div>
 
           <div style="padding:16px 32px;background:#111;color:#555;font-size:12px;">
-            <span>shanks-dev.vercel.app &nbsp;·&nbsp; Ce message est généré automatiquement.</span>
+            shanks-dev.vercel.app &nbsp;&middot;&nbsp; Ce message est généré automatiquement.
           </div>
 
         </div>
