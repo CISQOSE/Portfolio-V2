@@ -27,6 +27,10 @@ module.exports = async function handler(req, res) {
       },
     });
 
+    /* ── Salutation selon l'heure d'envoi ──────────────────────────── */
+    const hour = new Date().getHours();
+    const salutation = (hour >= 6 && hour < 18) ? 'Bonjour' : 'Bonsoir';
+
     /* ── Email de notification (à moi) ─────────────────────────────── */
     await transporter.sendMail({
       from: `"Portfolio Shanks_Dev" <${process.env.GMAIL_USER}>`,
@@ -69,7 +73,7 @@ module.exports = async function handler(req, res) {
           </div>
 
           <div style="padding:32px;">
-            <p style="font-size:15px;margin-bottom:16px;">Bonjour <strong>${prenom} ${nom || ''}</strong>,</p>
+            <p style="font-size:15px;margin-bottom:16px;">${salutation} <strong>${prenom} ${nom || ''}</strong>,</p>
 
             <p style="font-size:14px;line-height:1.9;color:#c8d0db;">
               Je vous remercie de m'avoir contacté via mon portfolio.<br>
